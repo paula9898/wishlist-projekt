@@ -1,6 +1,24 @@
 @WishlistApi_HostAddress = http://localhost:5132
 
-GET {{WishlistApi_HostAddress}}/weatherforecast/
+GET {{WishlistApi_HostAddress}}
 Accept: application/json
+
+
+
+###
+
+POST {{WishlistApi_HostAddress}}/api/wishlistitem
+Content-Type: application/json
+
+{
+    {
+        "id" : 3,
+        "productId" : 12,
+        "name" : "French for beginners",
+        "price" : 12.00,
+    }
+ 
+}
+
 
 ###
