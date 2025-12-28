@@ -6,7 +6,7 @@ namespace Wishlist.Domain.Entities
     public class Wishlist
     {
         public int WishlistId { private get; init; }
-        public int _UserId { private get; init; }
+        public int UserId { private get; init; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
@@ -22,7 +22,7 @@ namespace Wishlist.Domain.Entities
 
         public Wishlist(int userId, string Name, string Description, DateTime createdDate, UserTypes userType)
         {
-            _UserId = userId;
+            UserId = userId;
             this.Name = Name;
             this.Description = Description;
             this.CreatedDate = createdDate;
