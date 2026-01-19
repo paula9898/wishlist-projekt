@@ -1,10 +1,11 @@
-﻿
-namespace Wishlist.Domain.Entities
+﻿using Wishlist.Domain.Entities;
+
+namespace Wishlist.Domain.Repository
 {
     public interface IWishlistRepository
     {
-        Wishlist GetWishlistByUserId(int userId);
-        void Update(Wishlist wishlist);
+        WishlistBase GetWishlistForUser(User user);
+        void Update(WishlistBase wishlist);
         void Delete(int wishlistId);
     }
 }

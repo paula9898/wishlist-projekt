@@ -9,12 +9,21 @@ namespace Wishlist.Domain.Entities
         public required string Name { get; init; }
         public DateTime DateAdded { get; init; }
 
-
         public WishlistItem(int productId, string name, DateTime dateAdded)
         {
             this.ProductId = productId;
             this.Name = name;
             this.DateAdded = dateAdded;
         }
+
+        public bool isTheSameProductId(int productId) { 
+
+            if(productId.Equals(Id))
+            {
+                return false;
+            }
+            return true;
+        }
+
     }
 }
