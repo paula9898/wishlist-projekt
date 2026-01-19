@@ -31,6 +31,7 @@ public partial class Program
 
         }
         app.MapGet("/", () => "Hello World!");
+        app.MapControllers();
 
         //app.UseHttpsRedirection();
 
