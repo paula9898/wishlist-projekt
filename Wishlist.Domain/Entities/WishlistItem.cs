@@ -16,13 +16,10 @@ namespace Wishlist.Domain.Entities
             this.DateAdded = dateAdded;
         }
 
-        public bool isTheSameProductId(int productId) { 
+        public bool IsSameProductId(WishlistItem wishlistItem) {
 
-            if(productId.Equals(Id))
-            {
-                return false;
-            }
-            return true;
+            return wishlistItem.ProductId == ProductId;
+           
         }
 
     }

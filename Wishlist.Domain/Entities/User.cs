@@ -20,5 +20,7 @@ namespace Wishlist.Domain.Entities
 
             this.Id = id;
         }
+
+
     }
 }

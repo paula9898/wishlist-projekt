@@ -1,32 +1,33 @@
-﻿using System;
-using Wishlist.Domain.Entities;
+﻿using Wishlist.Domain.Entities;
 using Wishlist.Domain.Repository;
 
 public class WishlistInMemoryRepository : IWishlistRepository
 {
     private readonly Dictionary<int, WishlistBase> _wishlistStorage = new Dictionary<int, WishlistBase>();
-	public WishlistInMemoryRepository()
-	{
-	}
 
-    public void Delete(int wishlistId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public WishlistBase GetWishlistForUser(User user)
+    public bool Delete(int userId)
     {
         
-        if(_wishlistStorage.TryGetValue(user.Id, out var wishlist))
+       bool removed = _wishlistStorage.Remove(userId);
+
+        return removed;
+    }
+
+    public WishlistBase? GetWishlistByUserId(int userId)
+    {
+        
+        if(_wishlistStorage.TryGetValue(userId, out var wishlist))
         {
             return wishlist;
         }
 
-        throw new Exception("List not found");
+        return null;
     }
 
     public void Update(WishlistBase wishlist)
     {
-        throw new NotImplementedException();
+        var key = wishlist.User.Id;
+        
+        _wishlistStorage[key] = wishlist;
     }
 }
