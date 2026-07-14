@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Wishlist.Domain.Exceptions
+﻿namespace Wishlist.Domain.Exceptions
 {
     public abstract class DomainExceptions : Exception
     {

@@ -4,8 +4,8 @@ namespace Wishlist.Domain.Repository
 {
     public interface IWishlistRepository
     {
-        WishlistBase GetWishlistForUser(User user);
+        WishlistBase? GetWishlistByUserId(int userId);
         void Update(WishlistBase wishlist);
-        void Delete(int wishlistId);
+        bool Delete(int userId);
     }
 }

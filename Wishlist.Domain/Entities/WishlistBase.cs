@@ -1,41 +1,32 @@
-﻿using System.Xml.Linq;
-using Wishlist.Domain.Common.Errors;
-using Wishlist.Domain.Common.Results;
-using Wishlist.Domain.Exceptions;
-using static Wishlist.Domain.Entities.User;
+﻿using Wishlist.Domain.Exceptions;
 
 namespace Wishlist.Domain.Entities
 {
     public abstract class WishlistBase
     {
         public Guid WishlistId { private get; init; }
-        public User User { private get; init; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public User User { get; init; }
+        public DateTime CreatedDate { get; } = DateTime.Now;
         List<WishlistItem> _wishlistItems { get; }
         public IReadOnlyCollection<WishlistItem> WishlistItems => _wishlistItems;
 
         protected abstract int MaxItems { get; }
 
 
-        public WishlistBase(User user, string name, string Description, DateTime createdDate) 
+        public WishlistBase(User user) 
         {
             this.User = user;
-            this.Name = name ?? throw new ArgumentNullException(nameof(name));
-            this.Description = Description;
-            this.CreatedDate = createdDate;
             _wishlistItems = new List<WishlistItem>();
         }
 
         public void AddItem(WishlistItem item)
         {
-            if(_wishlistItems.Any(i => i.isTheSameProductId(item.ProductId)))
+            if(_wishlistItems.Any(i => i.IsSameProductId(item)))
             {
                 throw new WishlistItemAlreadyExistsException();
             }
 
-            if(_wishlistItems.Count > MaxItems)
+            if(_wishlistItems.Count >= MaxItems)
             {
                throw new WishlistMaxItemsReachedException(MaxItems);
             }

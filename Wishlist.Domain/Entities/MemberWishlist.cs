@@ -6,7 +6,7 @@ namespace Wishlist.Domain.Entities
 {
     public class MemberWishlist : WishlistBase
     {
-        public MemberWishlist(User user,string Name, string Description, DateTime createdDate, User.UserType userType) : base(user,Name, Description, createdDate)
+        public MemberWishlist(User user) : base(user)
         {
         }
 
