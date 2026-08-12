@@ -16,7 +16,6 @@ namespace WishlistApi.Controllers
                 Id = 1,
                 ProductId = 1,
                 Name = "Introduction to Algorithms 2e",
-                Price = 40.3,
                 //DateAdded = DateTime.Now,
 
             },
@@ -25,7 +24,6 @@ namespace WishlistApi.Controllers
                 Id = 2,
                 ProductId = 4,
                 Name = "Laptop Bag",
-                Price = 15.99,
                 //DateAdded = new DateTime(2025,12,10)
             }
         };
@@ -39,23 +37,35 @@ namespace WishlistApi.Controllers
 
         // GET api/<WishlistItemController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<WishlistItem> Get(int id)
         {
-            return "value";
+            var item = items.FirstOrDefault(i => i.Id == id);
+            return Ok(item);
         }
 
         // POST api/<WishlistItemController>
         [HttpPost]
         public async Task<ActionResult<WishlistItem>>CreateWishlistItem([FromBody] WishlistItem wishlistItem)
         {
-            if (items.Any(i => i.Id == wishlistItem.Id))
+            try
             {
-                return BadRequest("This item was already wishlist");
+                if (items.Any(i => i.Id == wishlistItem.Id))
+                {
+                    return BadRequest("This item was already wishlist");
+                }
+
+                
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
             items.Add(wishlistItem);
 
             return CreatedAtAction(nameof(Get), new { id = wishlistItem.Id }, wishlistItem);
+
 
         }
 
