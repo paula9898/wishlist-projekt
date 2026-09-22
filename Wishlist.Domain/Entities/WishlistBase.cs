@@ -16,6 +16,7 @@ namespace Wishlist.Domain.Entities
         public WishlistBase(User user) 
         {
             this.User = user;
+            this.WishlistId = Guid.NewGuid();
             _wishlistItems = new List<WishlistItem>();
         }
 
@@ -36,7 +37,13 @@ namespace Wishlist.Domain.Entities
 
         public void RemoveItem(int itemId)
         {
+
             var wishListItem = _wishlistItems.FirstOrDefault(i => i.Id == itemId);
+
+            if (wishListItem == null)
+            {
+                throw new WishlistItemNotFoundException();
+            }
 
             _wishlistItems.Remove(wishListItem);
         }
