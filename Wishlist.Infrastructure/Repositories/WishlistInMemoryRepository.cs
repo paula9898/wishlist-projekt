@@ -1,6 +1,8 @@
 ﻿using Wishlist.Domain.Entities;
 using Wishlist.Domain.Repository;
 
+namespace Wishlist.Infrastructure.Repositories;
+
 public class WishlistInMemoryRepository : IWishlistRepository
 {
     private readonly Dictionary<int, WishlistBase> _wishlistStorage = new Dictionary<int, WishlistBase>();
