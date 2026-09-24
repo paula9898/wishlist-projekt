@@ -1,4 +1,6 @@
-using Microsoft.AspNetCore.Builder;
+using Application_Layer.WishlistServices;
+using Wishlist.Domain.Repository;
+using Wishlist.Infrastructure.Repositories;
 
 public partial class Program
 {
@@ -12,6 +14,8 @@ public partial class Program
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddSingleton<IWishlistRepository, WishlistInMemoryRepository>();
+        builder.Services.AddScoped<AddItemToWishlistHandler>();
     
 
         var app = builder.Build();
