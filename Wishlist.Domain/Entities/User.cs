@@ -19,6 +19,7 @@ namespace Wishlist.Domain.Entities
             }
 
             this.Id = id;
+            this.UserType = userType;
         }
 
 
