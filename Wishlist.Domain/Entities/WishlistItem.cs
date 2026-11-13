@@ -11,7 +11,18 @@ namespace Wishlist.Domain.Entities
 
         public WishlistItem(int productId, string name)
         {
+            
+            if (productId <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(productId),"Product ID must be greater than zero");
+            }
             this.ProductId = productId;
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException($"{name} cannot be null or empty");
+            }
+
             this.Name = name;
         }
 

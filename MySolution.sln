@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wishlist.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wishlist.Application", "Application Layer\Wishlist.Application.csproj", "{659923B2-57F2-4413-9187-4C24A8128FA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wishlist.Domain.Tests", "Wishlist.Domain.Tests\Wishlist.Domain.Tests.csproj", "{6DB52920-2697-49E0-B759-DC5AEFA7E805}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,18 @@ Global
 		{659923B2-57F2-4413-9187-4C24A8128FA0}.Release|x64.Build.0 = Release|Any CPU
 		{659923B2-57F2-4413-9187-4C24A8128FA0}.Release|x86.ActiveCfg = Release|Any CPU
 		{659923B2-57F2-4413-9187-4C24A8128FA0}.Release|x86.Build.0 = Release|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Debug|x64.Build.0 = Debug|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Debug|x86.Build.0 = Debug|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Release|x64.ActiveCfg = Release|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Release|x64.Build.0 = Release|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Release|x86.ActiveCfg = Release|Any CPU
+		{6DB52920-2697-49E0-B759-DC5AEFA7E805}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
