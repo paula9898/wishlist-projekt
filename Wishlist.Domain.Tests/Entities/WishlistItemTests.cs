@@ -26,7 +26,16 @@ namespace Wishlist.Domain.Tests.Entities
             DateTime dateTime = wishlist.DateAdded;
 
             Assert.NotEqual(DateTime.MinValue, dateTime);
+        }
 
+        [Fact]
+        public void CreateWishlistItem_WithProductIdZero_ThrowsException()
+        {
+            int productId = 0;
+            string name = "Calculus book";
+
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => new WishlistItem(productId, name));
         }
     }
 }

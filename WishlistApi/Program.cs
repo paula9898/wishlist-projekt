@@ -1,4 +1,6 @@
 using Application_Layer.WishlistServices;
+using MongoDB.Driver;
+using Wishlist.Domain.Entities;
 using Wishlist.Domain.Repository;
 using Wishlist.Infrastructure.Repositories;
 
@@ -7,6 +9,7 @@ public partial class Program
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        var connectionString = "mongodb://localhost:27017";
 
         // Add services to the container.
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -14,9 +17,19 @@ public partial class Program
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        builder.Services.AddSingleton<IWishlistRepository, WishlistInMemoryRepository>();
+        builder.Services.AddSingleton<IWishlistRepository, WishlistMongoRepository>();
+        builder.Services.AddSingleton<IMongoClient>(new MongoClient(connectionString));
+        builder.Services.AddSingleton<IMongoDatabase>(sp =>
+        {
+            var client = sp.GetRequiredService<IMongoClient>();
+            return client.GetDatabase("WishlistDb");
+        });
+        builder.Services.AddSingleton<IMongoCollection<WishlistBase>>(sp =>
+        {
+            var database = sp.GetRequiredService<IMongoDatabase>();
+            return database.GetCollection<WishlistBase>("wishlists");
+        });
         builder.Services.AddScoped<AddItemToWishlistHandler>();
-    
 
         var app = builder.Build();
 

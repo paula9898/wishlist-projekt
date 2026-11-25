@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Wishlist.Domain.Entities
+﻿namespace Wishlist.Domain.Entities
 {
     public record WishlistItem
     {

@@ -4,10 +4,10 @@ namespace Wishlist.Domain.Entities
 {
     public abstract class WishlistBase
     {
-        public Guid WishlistId { private get; init; }
+        public Guid WishlistId { get; private set; }
         public User User { get; init; }
         public DateTime CreatedDate { get; } = DateTime.Now;
-        List<WishlistItem> _wishlistItems { get; }
+        private List<WishlistItem> _wishlistItems { get; }
         public IReadOnlyCollection<WishlistItem> WishlistItems => _wishlistItems;
 
         protected abstract int MaxItems { get; }
